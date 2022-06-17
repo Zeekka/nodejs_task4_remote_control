@@ -28,7 +28,7 @@ COPY . .
 docker build -t task4:latest .
 ```
 
-3) На хосте выполняешь команду `xauth list`. Вывод должен быть примерно такой
+3) На хосте выполняешь команду `xauth list`. Вывод должен быть примерно такой. Нам нужно запомнить первую строку
 ```
 e.udavihin@cmdb-128986:~/Projects/Nodejs_Course/nodejs_task4_remote_control$ xauth list
 cmdb-128986/unix:  MIT-MAGIC-COOKIE-1  a40718035856e7848ec628024dc1f5f1
@@ -40,8 +40,8 @@ cmdb-128986/unix:  MIT-MAGIC-COOKIE-1  a40718035856e7848ec628024dc1f5f1
 docker run --network host -v $(pwd)/app -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -it task4 sh
 ```
 
-5) В терминале докера `xauth add localhost:0  MIT-MAGIC-COOKIE-<тут цифра если больше 1 монитора у тебя>  <токен>`
-Если видешь ошибку: 
+5) В терминале докера выполняешь `xauth add localhost:0  MIT-MAGIC-COOKIE-<тут цифра 1, 2 или т.д от моника зависит>  <токен>`
+Если видешь ошибку (после перезапуска контейнера): 
 ```
 /app # npm run start
 
