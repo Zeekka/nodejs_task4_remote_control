@@ -1,0 +1,6 @@
+.idea/
+Dockerfile
+.dockerignore
+*local*
+node_modules
+
