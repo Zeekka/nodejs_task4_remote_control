@@ -41,7 +41,19 @@ docker run --network host -v $(pwd)/app -v /tmp/.X11-unix:/tmp/.X11-unix -e DISP
 ```
 
 5) В терминале докера `xauth add localhost:0  MIT-MAGIC-COOKIE-<тут цифра если больше 1 монитора у тебя>  <токен>`
+Если видешь ошибку: 
+```
+/app # npm run start
 
+> app@1.0.0 start
+> node ./src/index.js
+
+No protocol specified
+No protocol specified
+Could not open main display
+Segmentation fault (core dumped)
+```
+То повтори шаг 5
 6) Переходи к **Если не используешь докер**
 ## Если не используешь докер
 
