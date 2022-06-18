@@ -2,7 +2,7 @@ import Command from '../models/Command.js';
 import robot from 'robotjs';
 import CommandResult, {status} from '../types/CommandResult.js';
 
-export default class MouseUpCommand extends Command {
+export default class DrawCircleCommand extends Command {
     protected validateArgs(args: string[]): boolean {
         let isArgsValid = true;
 
