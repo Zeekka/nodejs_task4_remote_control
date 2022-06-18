@@ -5,7 +5,7 @@ export const status = {
 
 type CommandResult = {
     status: 'SUCCESS' | 'ERROR',
-    commandOutput?: string
+    commandOutput?: string | Buffer
 }
 
 export default CommandResult;
