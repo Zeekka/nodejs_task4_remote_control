@@ -44,7 +44,7 @@ docker run --network host -v $(pwd):/app -v /tmp/.X11-unix:/tmp/.X11-unix -e DIS
 /app # npm run start
 
 > app@1.0.0 start
-> node ./src/index.js
+> node ./src/index.ts
 
 No protocol specified
 No protocol specified
