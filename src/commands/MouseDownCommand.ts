@@ -2,7 +2,7 @@ import Command from '../models/Command.js';
 import robot from 'robotjs';
 import CommandResult, {status} from '../types/CommandResult.js';
 
-export default class MouseUpCommand extends Command {
+export default class MouseDownCommand extends Command {
     protected validateArgs(args: string[]): boolean {
         let isArgsValid = true;
 
@@ -17,7 +17,7 @@ export default class MouseUpCommand extends Command {
         super.exec(args);
         try {
             const mousePos = robot.getMousePos();
-            robot.moveMouseSmooth(mousePos.x, mousePos.y - Number(args[0]));
+            robot.moveMouseSmooth(mousePos.x, mousePos.y + Number(args[0]));
         } catch (err) {
             return {status: status.ERROR}
         }
