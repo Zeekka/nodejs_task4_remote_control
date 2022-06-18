@@ -32,7 +32,8 @@ wss.on('connection', (ws) => {
 });
 
 wss.on('error', (error) => {
-    console.log('Error occured');
+    console.log(error.message);
+    wss.close()
 })
 
 wss.on('listening', () => {
@@ -43,3 +44,9 @@ wss.on('close', () => {
     wss.close();
     console.log('Server stopped');
 })
+
+process.on('SIGINT', () => {
+    console.log('Caught interrupt signal. Closing socket');
+    wss.close();
+    process.exit();
+});
