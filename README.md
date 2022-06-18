@@ -1,4 +1,4 @@
-## Если используешь докер (дай тебе бог терпения)
+## Если используешь докер (дай тебе бог терпения). Гайд для Ubuntu
 1) Создаёшь Dockerfile в корне проекта с таким контентом
 
 ```
@@ -19,8 +19,6 @@ RUN apk add libxtst-dev libpng-dev
 # Install xauth
 RUN apk add xauth
 RUN touch ~/.Xauthority && chmod 644 ~/.Xauthority
-
-COPY . .
 ```
 
 2) Билдишь образ контейнера:
@@ -37,7 +35,7 @@ cmdb-128986/unix:  MIT-MAGIC-COOKIE-1  a40718035856e7848ec628024dc1f5f1
 
 4) Запускаешь докер контейнер и открываешь терминал (если ты не линуксоид то `pwd` замени на текущую директорию)
 ```
-docker run --network host -v $(pwd)/app -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -it task4 sh
+docker run --network host -v $(pwd):/app -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -it task4 sh
 ```
 
 5) В терминале докера выполняешь `xauth add localhost:0  MIT-MAGIC-COOKIE-<тут цифра 1, 2 или т.д от моника зависит>  <токен>`
