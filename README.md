@@ -38,7 +38,7 @@ cmdb-128986/unix:  MIT-MAGIC-COOKIE-1  a40718035856e7848ec628024dc1f5f1
 docker run --network host -v $(pwd):/app -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -it task4 sh
 ```
 
-5) В терминале докера выполняешь `xauth add localhost:0  MIT-MAGIC-COOKIE-<тут цифра 1, 2 или т.д от моника зависит>  <токен>`
+5) В терминале докера выполняешь `xauth add localhost:0  MIT-MAGIC-COOKIE-<тут цифра 1, 2 или т.д от моника зависит>  <токен>`  
 Если видешь ошибку (после перезапуска контейнера): 
 ```
 /app # npm run start
@@ -57,4 +57,11 @@ Segmentation fault (core dumped)
 
 **У меня были проблемы с установкой robotjs, но я изолировал своё окружение в докер, возможно тебе придётся глобально установить node-gyp и другие зависимости для твоей системы список тут https://robotjs.io/docs/building:**  
 `npm install -g node-gyp`  
-Но скорее всего, если у тебя вышло запустить robotjs у себя, то проблем быть не должно
+Но скорее всего, если у тебя вышло запустить robotjs у себя, то проблем быть не должно :)  
+
+### Запуск приложения
+1) `npm install`
+2) `npm run start`. Если вывод такой, то всё ок:  
+```
+Underling server start listening on {"address":"::","family":"IPv6","port":8080}
+```
