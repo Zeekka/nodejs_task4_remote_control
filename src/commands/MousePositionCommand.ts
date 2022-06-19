@@ -7,8 +7,8 @@ export default class MousePositionCommand extends Command {
         return args.length === 0;
     }
 
-    public exec(args: string[]): CommandResult {
-        super.exec(args);
+    public async exec(args: string[]): Promise<CommandResult> {
+        await super.exec(args);
         let mousePos;
 
         try {

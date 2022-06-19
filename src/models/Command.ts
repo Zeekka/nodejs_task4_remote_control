@@ -6,7 +6,7 @@ export default class Command {
         return true;
     }
 
-    public exec(args: string[]): CommandResult | never {
+    public async exec(args: string[]): Promise<CommandResult | never> {
         if (!this.validateArgs(args)) {
             throw new InvalidCommandInput('Invalid command input', args);
         }

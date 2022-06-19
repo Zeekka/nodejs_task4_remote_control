@@ -13,8 +13,8 @@ export default class MouseLeftCommand extends Command {
         return isArgsValid;
     }
 
-    public exec(args: string[]): CommandResult {
-        super.exec(args);
+    public async exec(args: string[]): Promise<CommandResult> {
+        await super.exec(args);
         try {
             const mousePos = robot.getMousePos();
             robot.moveMouse(mousePos.x - Number(args[0]), mousePos.y);

@@ -17,7 +17,7 @@ wss.on('connection', (ws) => {
         try {
             const parsedCommand: ParsedCommand = commandParser.parseCommand(data.toString());
             const command: Command = new (await commandFactory.create(parsedCommand.commandName)).default;
-            const commandResult: CommandResult = command.exec(parsedCommand.commandArgs);
+            const commandResult: CommandResult = await command.exec(parsedCommand.commandArgs);
 
             if (commandResult.commandOutput) {
                 console.log(commandResult.commandOutput);

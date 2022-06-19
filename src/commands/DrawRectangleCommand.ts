@@ -13,8 +13,8 @@ export default class DrawRectangleCommand extends Command {
         return isArgsValid;
     }
 
-    public exec(args: string[]): CommandResult {
-        super.exec(args);
+    public async exec(args: string[]): Promise<CommandResult> {
+        await super.exec(args);
         try {
             const mousePos = robot.getMousePos();
             const rectangleWidth = Number(args[0]);
