@@ -61,7 +61,14 @@ Segmentation fault (core dumped)
 
 ### Запуск приложения
 1) `npm install`
-2) `npm run start`. Если вывод такой, то всё ок:  
+2) В одной консоли набираешь команду чтобы запустить websocket сервер: `npm run start`
+Если вывод такой, то всё ок:
 ```
 Underling server start listening on {"address":"::","family":"IPv6","port":8080}
 ```
+3) Во второй консоли набираешь команду чтобы запустить front сервер`npm run start:front`
+Если вывод такой, то всё ок:
+```
+Start static http server on the 3000 port!
+```
+4) Переходишь на http://localhost:3000 и тыкаешься :)
