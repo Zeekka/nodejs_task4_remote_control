@@ -17,7 +17,7 @@ export default class MouseRightCommand extends Command {
         super.exec(args);
         try {
             const mousePos = robot.getMousePos();
-            robot.moveMouseSmooth(mousePos.x + Number(args[0]), mousePos.y);
+            robot.moveMouse(mousePos.x + Number(args[0]), mousePos.y);
         } catch (err) {
             return {status: status.ERROR}
         }

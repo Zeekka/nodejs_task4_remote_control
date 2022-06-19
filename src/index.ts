@@ -22,6 +22,8 @@ wss.on('connection', (ws) => {
             if (commandResult.commandOutput) {
                 console.log(commandResult.commandOutput);
                 ws.send(commandResult.commandOutput)
+            } else {
+                ws.send(data.toString());
             }
         } catch (error) {
             if (error instanceof Error) {
