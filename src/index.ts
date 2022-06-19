@@ -3,6 +3,7 @@ import CommandFactory from './utils/CommandFactory.js';
 import ParsedCommand from './types/ParsedCommand.js';
 import CommandResult from './types/CommandResult.js';
 import { WebSocketServer } from 'ws';
+import Command from './models/Command.js';
 
 const commandParser: CommandParser = new CommandParser();
 const commandFactory: CommandFactory = new CommandFactory();
@@ -15,7 +16,7 @@ wss.on('connection', (ws) => {
         console.log(data.toString());
         try {
             const parsedCommand: ParsedCommand = commandParser.parseCommand(data.toString());
-            const command = new (await commandFactory.create(parsedCommand.commandName)).default;
+            const command: Command = new (await commandFactory.create(parsedCommand.commandName)).default;
             const commandResult: CommandResult = command.exec(parsedCommand.commandArgs);
 
             if (commandResult.commandOutput) {
