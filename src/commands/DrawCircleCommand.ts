@@ -20,10 +20,9 @@ export default class DrawCircleCommand extends Command {
             const circleRadius = Number(args[0]);
             let y: number = mousePos.y;
             let x: number = mousePos.x;
-            let angle: number = - Math.PI;
             let isMouseToggled = false;
 
-            for (angle; angle <= Math.PI + 0.1; angle += 0.1) {
+            for (let angle = - Math.PI; angle <= Math.PI + 0.1; angle += 0.1) {
                 x = circleRadius * Math.cos(angle) + mousePos.x;
                 y = circleRadius * Math.sin(angle) + mousePos.y;
                 if (!isMouseToggled) {
