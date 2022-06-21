@@ -1,4 +1,4 @@
-## Если используешь докер (дай тебе бог терпения)
+## Если используешь докер (дай тебе бог терпения). Гайд для Ubuntu
 1) Создаёшь Dockerfile в корне проекта с таким контентом
 
 ```
@@ -19,8 +19,6 @@ RUN apk add libxtst-dev libpng-dev
 # Install xauth
 RUN apk add xauth
 RUN touch ~/.Xauthority && chmod 644 ~/.Xauthority
-
-COPY . .
 ```
 
 2) Билдишь образ контейнера:
@@ -28,7 +26,7 @@ COPY . .
 docker build -t task4:latest .
 ```
 
-3) На хосте выполняешь команду `xauth list`. Вывод должен быть примерно такой
+3) На хосте выполняешь команду `xauth list`. Вывод должен быть примерно такой. Нам нужно запомнить первую строку
 ```
 e.udavihin@cmdb-128986:~/Projects/Nodejs_Course/nodejs_task4_remote_control$ xauth list
 cmdb-128986/unix:  MIT-MAGIC-COOKIE-1  a40718035856e7848ec628024dc1f5f1
@@ -37,14 +35,44 @@ cmdb-128986/unix:  MIT-MAGIC-COOKIE-1  a40718035856e7848ec628024dc1f5f1
 
 4) Запускаешь докер контейнер и открываешь терминал (если ты не линуксоид то `pwd` замени на текущую директорию)
 ```
-docker run --network host -v $(pwd)/app -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -it task4 sh
+docker run --network host -v $(pwd):/app -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -it task4 sh
 ```
 
-5) В терминале докера `xauth add localhost:0  MIT-MAGIC-COOKIE-<тут цифра если больше 1 монитора у тебя>  <токен>`
+5) В терминале докера выполняешь `xauth add localhost:0  MIT-MAGIC-COOKIE-<тут цифра 1, 2 или т.д от моника зависит>  <токен>`  
+Если видешь ошибку (после перезапуска контейнера): 
+```
+/app # npm run start
 
+> app@1.0.0 start
+> node ./src/index.ts
+
+No protocol specified
+No protocol specified
+Could not open main display
+Segmentation fault (core dumped)
+```
+То повтори шаг 5
 6) Переходи к **Если не используешь докер**
 ## Если не используешь докер
 
 **У меня были проблемы с установкой robotjs, но я изолировал своё окружение в докер, возможно тебе придётся глобально установить node-gyp и другие зависимости для твоей системы список тут https://robotjs.io/docs/building:**  
 `npm install -g node-gyp`  
-Но скорее всего, если у тебя вышло запустить robotjs у себя, то проблем быть не должно
+Но скорее всего, если у тебя вышло запустить robotjs у себя, то проблем быть не должно :)  
+
+### Запуск приложения
+1) `npm install`
+2) В одной консоли набираешь команду чтобы запустить websocket сервер: `npm run start`
+Если вывод такой, то всё ок:
+```
+Underling server start listening on {"address":"::","family":"IPv6","port":8080}
+```
+3) Во второй консоли набираешь команду чтобы запустить front сервер`npm run start:front`
+Если вывод такой, то всё ок:
+```
+Start static http server on the 3000 port!
+```
+4) Переходишь на http://localhost:3000 и тыкаешься :)
+
+**Note:** 
+1) Раскладка клавиатуры должна быть английской, на русской расскладке фронт не реагирует :<
+2) Не делай скрины возле границы экрана)) так падает ошибка. На стриме об этом говорили

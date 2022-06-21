@@ -3,4 +3,5 @@ Dockerfile
 .dockerignore
 *local*
 node_modules
+build/
 
